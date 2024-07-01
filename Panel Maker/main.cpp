@@ -1,5 +1,9 @@
 #include "Core.h"
 #include "OpenGLObject.h"
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+
 
 int main() {
     // Setting of variables and objects
@@ -44,8 +48,11 @@ int main() {
         // Swap front and back buffers
         glfwSwapBuffers(mainWindow);
 
-        // Poll for and process events
+        // Poll for and process events. glfwPollEvents() is great for constant polling.
         glfwPollEvents();
+
+        // Wait for events occur to process before continuing the thread
+        //glfwWaitEvents();
     }
 
     // Terminate GLFW, must be done before the program exits
