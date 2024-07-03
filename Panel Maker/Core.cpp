@@ -6,9 +6,10 @@ void Core::preInit() {
 	// Should probably remain first to allow logging of windows handling errors
 	glfwSetErrorCallback(Core::error_callback);
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	// Setup Dear ImGui context
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+
 }
 
 // Initiate GLFW
@@ -18,6 +19,9 @@ void Core::initGLFW() {
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
 // Error callback function as defined by GLFW documentation.
